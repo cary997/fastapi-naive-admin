@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：cache_tools.py
 @Author ：Cary
 @Date ：2024/3/1 0:54
@@ -10,7 +10,8 @@
 """
 import asyncio
 import json
-from extend.redis_init import get_redis
+from builtins import anext
+from extend.redis.init import get_redis
 from utils.serialization_tools import get_dict_target_value
 
 
@@ -32,7 +33,8 @@ async def redis_exists_key(key: str):
     key : reids中的key
     判断key是否存在，数据为空也视为不存在
     """
-    cache = await get_redis()
+    _c = get_redis()
+    cache = await anext(_c)
     try:
         # 返回值1和0
         state = await cache.exists(key)
@@ -51,7 +53,8 @@ async def get_redis_data(key: str, value_key: str = None):
     key : reids中的key
     value_key : 如果是个json可直接查找json里的字段
     """
-    cache = await get_redis()
+    _c = get_redis()
+    cache = await anext(_c)
     try:
         is_empty = await redis_exists_key(key)
         if not is_empty:
@@ -71,7 +74,8 @@ async def set_redis_data(key: str, value=None, **kwargs):
     key : reids中的key
     value : 要存的数据
     """
-    cache = await get_redis()
+    _c = get_redis()
+    cache = await anext(_c)
     try:
         if isinstance(value, dict):
             value = json.dumps(value)
@@ -81,6 +85,6 @@ async def set_redis_data(key: str, value=None, **kwargs):
 
 
 if __name__ == '__main__':
-    asyncio.run(get_redis_data('sys:settings', 'notificationChannels.email'))
+    asyncio.run(get_redis_data('sys:settings', 'channels.email'))
     # asyncio.run(set_redis_data('k1', {'a': 1, 'b': 2}, ex=200))
     # asyncio.run(redis_exists_key('sys:settings'))

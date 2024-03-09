@@ -1,0 +1,47 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+      .content {
+        box-shadow: 0px 4px 6px hsla(0, 0%, 46%, 0.2);
+        border-bottom: 1px solid hsla(0, 0%, 46%, 0.2)
+      }
+      .content-message {
+        text-indent: 28px;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-wrapper background-color="#f7f8fa" border-radius="6px 6px 6px 6px" padding-right="30px" padding-left="30px">
+      <mj-section padding-top="0px" padding-bottom="0px">
+        <mj-column>
+          <mj-image src="cid:logo" width="56px" height="28px" padding-top="0px" padding-bottom="10px">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+      <mj-section css-class="content" background-color="#fff" border-top="2px solid #8e97fd" border-radius="6px 6px 6px 6px">
+        <mj-column width="400px">
+          <mj-text font-style="normal" font-size="17px" font-family="Arial, Helvetica, sans-serif" color="#626262">
+            <strong>{{title}}</strong>
+          </mj-text>
+          <mj-text color="#525252" padding-top="20px" font-size="14px">尊敬的{{username}}，您好！
+          </mj-text>
+          <mj-text css-class="content-message" line-height="25px" color="#525252" font-size="14px" padding-bottom="20px"> {{message}}
+          </mj-text>
+          <mj-button background-color="#8e97fd" width="100%" href="{{sys_link}}">
+            平台链接
+          </mj-button>
+          <mj-text>
+            <span style="font-size:14px;"><strong>{{sys_title}}</strong></span>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#f7f8fa">
+        <mj-column>
+          <mj-text align="center" font-size="12px" color="#867e7e">
+            此为系统邮件，请勿回复。
+          </mj-text>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>

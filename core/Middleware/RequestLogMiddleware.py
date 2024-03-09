@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：RequestLogMiddleware.py
 @Author ：Cary
 @Date ：2024/2/8 17:19

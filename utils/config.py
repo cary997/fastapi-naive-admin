@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：config.py
 @Author ：Cary
 @Date ：2024/2/3 19:18
@@ -24,9 +24,15 @@ class Config(BaseSettings):
     """
     默认读取系统环境变量，若无对应key则使用config.yaml中配置
     """
+
+    class Config:
+        env_file = BASE_DIR.joinpath(".env")
+        case_sensitive = True
+        env_prefix = "FASTAPI_"
+
     # 项目根路径
     BASE_DIR: Optional[Union[PosixPath, WindowsPath]] = BASE_DIR
-    BASE_TEMPLATES_DIR: Optional[Union[PosixPath, WindowsPath]] = BASE_DIR / 'templates'
+    BASE_TEMPLATES_DIR: Optional[Union[PosixPath, WindowsPath]] = BASE_DIR / 'templates' / 'build'
 
     # FastAPI配置
     SYS_TITLE: Optional[str] = DefaultConfig['SYSTEM']['SYS_TITLE']
@@ -82,11 +88,6 @@ class Config(BaseSettings):
     REDIS_SSL: Optional[bool] = DefaultConfig['CACHE']['REDIS_SSL']
     REDIS_SSL_CERT_REQS: Optional[str] = DefaultConfig['CACHE']['REDIS_SSL_CERT_REQS']
     REDIS_SSL_CA_CERTS: Optional[str] = DefaultConfig['CACHE']['REDIS_SSL_CA_CERTS']
-
-    class Config:
-        env_file = BASE_DIR.joinpath(".env")
-        case_sensitive = True
-        env_prefix = "FASTAPI_"
 
 
 # 缓存配置信息

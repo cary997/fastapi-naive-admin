@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：encryption.py
 @Author ：Cary
 @Date ：2024/2/15 16:31

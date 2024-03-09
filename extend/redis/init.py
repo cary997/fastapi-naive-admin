@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
-@File ：redis_init.py
+
+@File ：init.py
 @Author ：Cary
 @Date ：2024/2/26 14:27
 @Descripttion : "redis连接初始化"
@@ -19,7 +19,7 @@ from utils.config import settings
 from loguru import logger
 
 
-class RedisMinx:
+class RedisMixin:
     def __init__(self):
         self.mode: str = settings.REDIS_MODE
         self.host: str = settings.REDIS_ADDRESS
@@ -100,20 +100,23 @@ class RedisMinx:
 
 async def register_redis(app: FastAPI):
     # 注册redis测试连接
-    app.state.cache = await RedisMinx().connect_redis
+    app.state.cache = await RedisMixin().connect_redis
 
 
 redisCache = Annotated[Union[aioredis.Redis, aioredis.Sentinel, aioredis.RedisCluster], Field(description="redis联合类型")]
 
 
 async def get_redis() -> redisCache:
-    _redis_coon = await RedisMinx().connect_redis
-    return _redis_coon
+    _redis_coon = await RedisMixin().connect_redis
+    try:
+        yield _redis_coon
+    finally:
+        await _redis_coon.close()
 
 
 if __name__ == "__main__":
     import asyncio
 
-    a = asyncio.run(RedisMinx().connect_redis)
+    a = asyncio.run(RedisMixin().connect_redis)
     print(type(a))
     print(a)

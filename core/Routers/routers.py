@@ -2,7 +2,6 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
 @File ：routers.py
 @Author ：Cary
 @Date ：2024/2/3 16:17

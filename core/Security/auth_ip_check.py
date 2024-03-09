@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：auth_ip_check.py
 @Author ：Cary
 @Date ：2024/3/1 2:36

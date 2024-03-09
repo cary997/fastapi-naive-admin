@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：cusotm_route.py
 @Author ：Cary
 @Date ：2024/2/8 23:17

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：config.py
 @Author ：Cary
 @Date ：2024/2/3 19:18

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：password_tools.py
 @Author ：Cary
 @Date ：2024/2/19 00:07
@@ -87,18 +87,14 @@ def aes_verify_password(password, old_password):
     return False
 
 
-def is_base64(s):
+def is_decrypt(text):
+    """
+    判读密码是否能正常解密 能解密说明已经加密过
+    """
     try:
-        # 将字符串解码为二进制数据
-        decoded_data = base64.b64decode(s)
-        # 将二进制数据编码为字符串
-        encoded_data = base64.b64encode(decoded_data)
-        # 检查字符串长度和字符范围
-        if len(s) % 4 == 0 and encoded_data == s.encode():
-            return True
-        else:
-            return False
-    except Exception:
+        aes_decrypt_password(text)
+        return True
+    except ValueError:
         return False
 
 
@@ -121,7 +117,7 @@ def jwt_decode(token, verify_exp=True):
 
 
 if __name__ == "__main__":
-    test = aes_hash_password("saldja&**^%$56")
+    test = aes_hash_password("bmaftjggvxbibeae")
     print(test)
-    print(is_base64(test))
+    print(is_decrypt('zcqeqzyablobbfhc'))
     print(generate_password(12))

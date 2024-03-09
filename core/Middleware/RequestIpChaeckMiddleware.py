@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：RequestLogMiddleware.py
 @Author ：Cary
 @Date ：2024/2/8 17:19
@@ -10,9 +10,9 @@
 """
 
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
+from starlette.middleware import _MiddlewareClass
 from fastapi import Request, Response
 from loguru import logger
-
 from core.Exeption.Response import fail
 from core.Security.auth_ip_check import verify_client_ip, get_client_ip
 

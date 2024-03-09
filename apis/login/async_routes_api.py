@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：async_routes_api.py
 @Author ：Cary
 @Date ：2024/2/20 23:31
@@ -14,6 +14,7 @@ from core.Security.auth_jwt import check_user_jwt
 from models.auth.model import AuthUsers, AuthMenus
 from schemas.login.async_routes_schema import MenusTreeResponse
 from schemas.auth import users_schema
+from utils.cache_tools import get_redis_data
 from utils.config import settings
 from utils.serialization_tools import ToTree
 
@@ -38,6 +39,10 @@ async def async_routes(req: Request):
     menus_list = []
     menus_id = []
     roles = user.model_dump().get('roles')
+    # 平台设置的用户默认权限
+    default_roles = await get_redis_data("sys:settings", "general.user_default_roles")
+    if default_roles is not None:
+        roles = [*roles, *default_roles]
     for role in roles:
         if role['role_status'] != False and 'menus' in role:
             for menu in role['menus']:

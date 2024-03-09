@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：model.py
 @Author ：Cary
 @Date ：2024/2/26 21:19
@@ -22,6 +22,7 @@ class SystemSettings(Model):
     update_at = UnixDateTimeField(is_auto_now=True, null=True, description="更新时间")
     general = fields.JSONField(default={}, description="常规配置", null=True)
     security = fields.JSONField(default={}, description="安全设置", null=True)
+    ldap = fields.JSONField(default={}, description="ldap设置", null=True)
     channels = fields.JSONField(default={}, description="通知渠道", null=True)
 
     class Meta:

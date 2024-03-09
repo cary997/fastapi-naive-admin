@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 """
-@Project ：fastapi-naive-admin
+
 @File ：send_mail.py
 @Author ：Cary
 @Date ：2024/3/1 4:00
@@ -19,7 +19,7 @@ from typing import List, Optional
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
 from utils.cache_tools import get_redis_data
 from utils.config import settings
-from utils.password_tools import is_base64, aes_decrypt_password
+from utils.password_tools import is_decrypt, aes_decrypt_password
 
 
 class SendMail(object):
@@ -116,9 +116,8 @@ async def sys_send_mail(
         return False
     elif _config.get('MAIL_SERVER') is None:
         return False
-    if is_base64(_config.get('MAIL_PASSWORD')):
+    if is_decrypt(_config.get('MAIL_PASSWORD')):
         _config['MAIL_PASSWORD'] = aes_decrypt_password(_config.get('MAIL_PASSWORD'))
-
     _send = SendMail(recipients=recipients, subject=subject, body=body, config=_config,
                      template_folder=template_folder, template_name=template_name)
     _res = await _send.send()
@@ -133,4 +132,4 @@ async def sys_send_mail(
 if __name__ == '__main__':
     asyncio.run(sys_send_mail(recipients="test@163.com",
                               body={'title': "密码重置完成", 'username': "test", "message": "新的密码为 asdasdsad"},
-                              subject="系统通知-重置密码", template_name="system-info.html"))
+                              subject="系统通知-重置密码", template_name="email.html"))

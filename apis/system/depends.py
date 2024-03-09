@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：depends.py
 @Author ：Cary
 @Date ：2024/3/3 6:23
@@ -11,7 +11,7 @@
 from core.Exeption.Response import fail
 from schemas.system import settings_schema
 from utils.ipaddress_tools import check_ip_list
-from utils.password_tools import aes_hash_password, is_base64
+from utils.password_tools import aes_hash_password, is_decrypt
 
 
 async def set_settings_depends(update_content: settings_schema.Setings):
@@ -27,12 +27,19 @@ async def set_settings_depends(update_content: settings_schema.Setings):
         check_state, failed_ip = await check_ip_list(ip_list)
         if not check_state:
             return fail(message=f"请检查IP或IP范围格式 {failed_ip}")
+    # 配置中的密码加密
+    if 'ldap' in update_dict:
+        ldap = update_dict.get('ldap')
+        ldap_password = ldap.get('password')
+        if ldap_password is not None and not is_decrypt(ldap_password):
+            update_dict['ldap']['password'] = aes_hash_password(
+                ldap_password)
 
     # 配置中的密码加密
     if 'channels' in update_dict:
         channels = update_dict.get('channels')
         mail_password = channels.get('email').get('MAIL_PASSWORD')
-        if mail_password is not None and not is_base64(mail_password):
+        if mail_password is not None and not is_decrypt(mail_password):
             update_dict['channels']['email']['MAIL_PASSWORD'] = aes_hash_password(
                 mail_password)
     return update_dict

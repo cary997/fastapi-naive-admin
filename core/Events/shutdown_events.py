@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：shutdown_events.py
 @Author ：Cary
 @Date ：2024/2/8 15:21

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：start_events.py
 @Author ：Cary
 @Date ：2024/2/8 15:21
@@ -12,8 +12,8 @@ from typing import Callable
 from fastapi import FastAPI
 from core.Exeption.init import register_exception
 from core.Routers.routers_init import register_routers
-from extend.db_init import format_dblink, register_db
-from extend.redis_init import register_redis
+from extend.datebase.init import register_db
+from extend.redis.init import register_redis
 from utils.config import settings
 from loguru import logger
 

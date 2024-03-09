@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：login_urls.py
 @Author ：Cary
 @Date ：2024/2/27 20:10

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：main.py
 @Author ：Cary
 @Date ：2024/2/1 15:45
@@ -24,7 +24,6 @@ from core.Middleware.RequestLogMiddleware import RequestLogMiddleware
 from utils.config import settings
 from core.Events import start_events, shutdown_events
 from core.LogManage.init_log import init_logs
-from loguru import logger
 
 # 实例化fastapi
 app = FastAPI(

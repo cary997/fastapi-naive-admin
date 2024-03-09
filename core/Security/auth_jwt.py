@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：auth_jwt.py
 @Author ：Cary
 @Date ：2024/2/18 20:38
@@ -15,7 +15,7 @@ from jose import JWTError, jwt
 from fastapi import Depends, Request, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError
-from extend.redis_init import redisCache
+from extend.redis.init import redisCache
 from models.auth.model import AuthUsers
 from utils.config import settings
 from utils.password_tools import jwt_decode, get_password_hash, random_str

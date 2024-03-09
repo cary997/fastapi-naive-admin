@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：menus_schema.py
 @Author ：Cary
 @Date ：2024/1/24 23:31

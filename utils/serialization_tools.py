@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：serialization_tools.py
 @Author ：Cary
 @Date ：2024/2/6 02:47

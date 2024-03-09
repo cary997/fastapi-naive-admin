@@ -2,8 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
-@File ：db_init.py
+
+@File ：init.py
 @Author ：Cary
 @Date ：2024/2/3 19:14
 @Descripttion : "数据库连接初始化"
@@ -54,7 +54,8 @@ DB_ORM_CONFIG = {
     },
     "apps": {
         "models": {
-            "models": ["aerich.models", 'models'],
+            # "models": ["aerich.models", 'models'],
+            "models": ['models'],
             "default_connection": "master"
         },
     },

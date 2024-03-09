@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-@Project ：fastapi-naive-admin
+
 @File ：users_schema.py
 @Author ：Cary
 @Date ：2024/2/17 21:48
@@ -11,14 +11,14 @@
 import math
 from fastapi import APIRouter, Request, Query, BackgroundTasks
 from core.Exeption.Response import fail, success
-from extend.redis_init import redisCache
+from extend.redis.init import redisCache
 from schemas.auth import users_schema
 from models.auth.model import AuthUsers
 from models.auth.model import AuthRoles
 from schemas.base import BaseResponse
 from utils.cache_tools import get_redis_data
 from utils.password_tools import get_password_hash, generate_password
-from utils.send_tools.send_mail import sys_send_mail
+from extend.sends.send_mail import sys_send_mail
 
 router = APIRouter(prefix='/users')
 
@@ -188,7 +188,7 @@ async def auth_users_bulkset(request: Request, update_content: users_schema.User
         if "user_type" in update_fields:
             user.user_type = update_content.user_type
         res_list.append(user.pk)
-    # 角色字段为外键无法使用bulk_update方法
+    # 角色字段为多对多无法使用bulk_update方法
     if "roles" in update_fields:
         update_fields.remove("roles")
     # 删除角色字段后还存在其他字段则批量更新
@@ -309,8 +309,8 @@ async def auth_users_pwdset(request: Request, req_data: users_schema.UserSetPass
             # 配置了邮件就后台异步发送邮件通知不返回结果
             background_tasks.add_task(sys_send_mail, recipients=get_user.email,
                                       body={'title': "密码重置完成", 'username': get_user.nickname,
-                                            "message": f"新的密码为 {new_password}"},
-                                      subject="重置密码通知", template_name="system-info.html")
+                                            "message": f"新的密码为 <font color='#8e97fd'>{new_password}</font> 请在登录后立即修改密码，以避免您的密码泄露！"},
+                                      subject="重置密码通知", template_name="email.html")
         return success(message="重置成功", data={'new_password': new_password})
     else:
         if user_id != request.state.user_id:
@@ -344,7 +344,7 @@ async def auth_users_otpreset(user_id: int, background_tasks: BackgroundTasks):
         # 配置了邮件就异步发送邮件通知不返回结果
         background_tasks.add_task(sys_send_mail, recipients=get_user.email,
                                   body={'title': "TOTP令牌重置完成", 'username': get_user.nickname,
-                                        "message": "请重新登录完成绑定"},
-                                  subject="重置TOTP通知", template_name="system-info.html")
+                                        "message": "请重新登录您的账户，系统将自动提示您绑定令牌，请按照系统提示完成绑定！"},
+                                  subject="重置TOTP通知", template_name="email.html")
 
     return success(message="重置成功")
