@@ -2,7 +2,7 @@
 name = "fastapi-naive-admin"
 version = "v1.2.6"
 description = "fastapi-naive-admin backend service"
-authors = ["guoyaolei <guoyaolei@gmail.com>"]
+authors = ["Cary <yaoleiguo@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
 package-mode = false
