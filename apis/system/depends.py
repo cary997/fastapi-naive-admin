@@ -28,6 +28,13 @@ async def set_settings_depends(update_content: settings_schema.Setings):
         if not check_state:
             return fail(message=f"请检查IP或IP范围格式 {failed_ip}")
     # 配置中的密码加密
+    if 'general' in update_dict:
+        general = update_dict.get('general')
+        user_default_password = general.get('user_default_password')
+        if user_default_password is not None and not is_decrypt(user_default_password):
+            update_dict['general']['user_default_password'] = aes_hash_password(
+                user_default_password)
+    # 配置中的密码加密
     if 'ldap' in update_dict:
         ldap = update_dict.get('ldap')
         ldap_password = ldap.get('password')

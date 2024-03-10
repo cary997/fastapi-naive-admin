@@ -8,12 +8,14 @@
 @Date ：2024/2/8 17:19
 @Descripttion : "打印所有请求日志"
 """
+import json
 
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 from fastapi import Request, Response
 from loguru import logger
 
 from core.Security.auth_ip_check import get_client_ip
+from utils.config import settings
 
 
 class RequestLogMiddleware(BaseHTTPMiddleware):
@@ -27,10 +29,16 @@ class RequestLogMiddleware(BaseHTTPMiddleware):
         :param call_next:
         :return:
         """
-        # request_body是在cusotm_route中将body添加至scope
-        body = request.scope.get('request_body')
+        # body = await request.body()
+        # if len(body) != 0:
+        #     body = json.loads(str(body, 'utf-8'))
+        # else:
+        #     body = None
         client_ip = await get_client_ip(request)
+        lever = settings.LOG_LEVER
         response = await call_next(request)
-        logger.bind(payload=body).debug(
-            f"{client_ip} - {request.method} {response.status_code} {request.url}")
+        # if lever == 'DEBUG':
+        #     logger.bind(payload=body).debug(
+        #         f"{client_ip} - {request.method} {response.status_code} {request.url}")
+        logger.info(f"{client_ip} - {request.method} {response.status_code} {request.url}")
         return response

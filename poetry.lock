@@ -1883,4 +1883,4 @@ reference = "qinghua"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "acb3349649829357b27379a3d5b7d69636ee209202c9da0cfc66aeef68a2fb0a"
+content-hash = "0b82e08e63a4fcf109b7be351c7d051d06b6fb753483a26e8b32b1b0a75c5ba1"

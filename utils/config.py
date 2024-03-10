@@ -53,7 +53,6 @@ class Config(BaseSettings):
 
     # 日志配置
     LOG_PATH: Optional[str] = DefaultConfig['LOG']['LOG_PATH']
-    ORM_LOG_PATH: Optional[str] = DefaultConfig['LOG']['ORM_LOG_PATH']
     LOG_FORMAT: Optional[str] = DefaultConfig['LOG']['LOG_FORMAT']
     LOG_LEVER: Optional[str] = DefaultConfig['LOG']['LOG_LEVER']
     LOG_ROTATION_TIME: Optional[str] = DefaultConfig['LOG']['LOG_ROTATION_TIME']

@@ -130,7 +130,7 @@ CREATE TABLE `auth_users`  (
 -- ----------------------------
 -- Records of auth_users
 -- ----------------------------
-INSERT INTO `auth_users` VALUES (1, 1710008869, 1710008869, 'admin', '$argon2id$v=19$m=65536,t=3,p=4$0xoDwPhfixHiPKd0DmEMgQ$BlUbtCOEZbv4zohU7QV5/vihwPkY8vHdDTMrZJcsm7A', '超管', '', '', 1, 1, NULL);
+INSERT INTO `auth_users` VALUES (1, 1710008869, 1710008869, 'admin', '$argon2id$v=19$m=65536,t=3,p=4$7j1nDCHkXIvRurdWKqV0Tg$QaeVH4SHkQupcLrttSIrAEVfdxXpE3wbmV5jMV17Zmg', '超管', '', '', 1, 1, NULL);
 
 -- ----------------------------
 -- Table structure for auth_users_roles

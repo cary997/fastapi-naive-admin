@@ -101,7 +101,7 @@ async def auth_roles_list():
     """
 
     # 查询结果
-    query_data = AuthRoles.all().order_by("name")
+    query_data = AuthRoles.all().order_by("id")
 
     # 序列化查询结果
     form_query_data = await roles_schema.RoleQuerySet.from_queryset(query_data)

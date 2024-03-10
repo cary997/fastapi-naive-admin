@@ -12,12 +12,11 @@ from fastapi import APIRouter, Security, Depends
 from apis.test.test_url import testRouters
 from core.Security.auth_jwt import check_user_jwt
 from utils.config import settings
-from core.Routers.cusotm_route import CusotmRoute
 from apis.login.login_urls import loginRouters
 from apis.auth.auth_urls import authRouters
 from apis.system.system_url import systemRouters
 
-Routers = APIRouter(prefix=settings.SYS_ROUTER_PREFIX, route_class=CusotmRoute, )
+Routers = APIRouter(prefix=settings.SYS_ROUTER_PREFIX)
 
 # 登录
 Routers.include_router(loginRouters, tags=["login"])

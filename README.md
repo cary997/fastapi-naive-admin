@@ -24,16 +24,16 @@
 - ......
 
 ### 前端代码
-[fastapi-naive-admin](https://github.com/cary997/fastapi-naive-web)
+[fastapi-naive-web](https://github.com/cary997/fastapi-naive-web)
 
 ### 预览地址
-[fastapi-naive-admin](https://github.com/cary997/fastapi-naive-web)
+[fastapi-naive-admin](http://121.196.209.165:8080)
 
 ### 后端开发环境安装
 #### 本地开发环境
 
 - python 3.12.2
-- poetry 1.7.1
+- poetry 1.8.2
 - mysql 8.3.0 (docker image mysql:latest)
 - redis 7.2.4 (docker image redis:latest)
 
@@ -42,10 +42,11 @@
 ```shell
 - 使用poetry
 
-poetry install --no-root
+poetry install
 
 - 使用pip
-pip install -r requirements.txt 
+
+pip install -r requirements.txt
 ```
 
 #### 配置文件 && 初始化sql
@@ -58,6 +59,10 @@ pip install -r requirements.txt 
 - 初始化数据库(项目根目录base.sql)
 
 mysql -uroot -proot123 < base.sql
+
+- 默认账户密码
+admin/Admin@123
+
 ```
 
 #### 启动

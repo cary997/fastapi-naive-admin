@@ -117,7 +117,7 @@ def jwt_decode(token, verify_exp=True):
 
 
 if __name__ == "__main__":
-    test = aes_hash_password("bmaftjggvxbibeae")
+    test = aes_hash_password("bmaftjggvxbibeae12atg541")
     print(test)
     print(is_decrypt('zcqeqzyablobbfhc'))
     print(generate_password(12))

@@ -5,10 +5,11 @@ description = "fastapi-naive-admin backend service"
 authors = ["guoyaolei <guoyaolei@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
-uvicorn = {extras = ["standard"], version = "^0.26.0"}
+uvicorn = { extras = ["standard"], version = "^0.26.0" }
 loguru = "^0.7.2"
 pycryptodome = "^3.20.0"
 python-multipart = "^0.0.6"
@@ -17,9 +18,9 @@ redis = "^5.0.1"
 pydantic-settings = "^2.1.0"
 fastapi = "^0.109.0"
 cryptography = "^42.0.2"
-tortoise-orm = {extras = ["asyncmy", "asyncpg"], version = "^0.20.0"}
-python-jose = {extras = ["cryptography"], version = "^3.3.0"}
-passlib = {extras = ["argon2"], version = "^1.7.4"}
+tortoise-orm = { extras = ["asyncmy", "asyncpg"], version = "^0.20.0" }
+python-jose = { extras = ["cryptography"], version = "^3.3.0" }
+passlib = { extras = ["argon2"], version = "^1.7.4" }
 pyotp = "^2.9.0"
 fastapi-mail = "^1.4.1"
 ipy = "^1.1"
@@ -38,8 +39,7 @@ build-backend = "poetry.core.masonry.api"
 [[tool.poetry.source]]
 name = "qinghua"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
-priority = "default"
+priority = "primary"
 
 [[tool.poetry.source]]
 name = "pypi"
-priority = "primary"

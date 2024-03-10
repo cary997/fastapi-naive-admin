@@ -11,7 +11,6 @@
 from fastapi import FastAPI
 from loguru import logger
 from fastapi.routing import APIRoute
-
 from core.Routers.routers import Routers
 
 

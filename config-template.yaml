@@ -33,8 +33,6 @@ CORS:
 LOG:
   # 日志路径
   LOG_PATH: 'logs/fastapi-naive.log'
-  # ORM日志路径 DEBBG才打印
-  ORM_LOG_PATH: 'logs/orm.log'
   # 日志格式
   LOG_FORMAT: '<green>{time:YYYY-MM-DD HH:mm:ss:SSS}</green> | <level>{level}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>'
   # 日志级别
