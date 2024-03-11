@@ -7,5 +7,6 @@ logs
 config.yaml
 devtest
 *node_modules
+package-lock.json
 *package-lock.json
 *package.json
